@@ -1,0 +1,1 @@
+django17 --python=/usr/bin/python3.4 pip install django
