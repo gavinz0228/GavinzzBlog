@@ -10,5 +10,12 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r"^profile/",views.profile),
+    url(r"^articles/$",views.articles),
+    url(r"^articles/(?P<currentPage>[0-9]+)/$",views.articles),
+    url(r"^contactus/",views.contactus),
+    url(r"(?P<currentPage>[0-9]+)",views.home),
     url(r"",views.home),
+
+
 )

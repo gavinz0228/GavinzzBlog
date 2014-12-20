@@ -1,0 +1,34 @@
+{%extends "base.html"%}
+{%block content%}
+
+
+
+
+    	<div class="thumbnail tile fluid article-container">
+
+			<div class="article-content">
+			<ul>
+			    {%for article in articles%}
+			    <li>
+                    <a href='{{article.id}}'>{{article.title}}</a>
+                </li>
+                {%endfor%}
+            </ul>
+			</div>
+            <div class="pagination-bar">
+              <ul class="pagination">
+                <li {%if currentPage|add:"0" != 1 %}  {%else%} class="sr-only" {%endif%}><a href='{% url 'Gavinz.views.articles' currentPage|add:"-1" %}' >Prev</a></li>
+                {%for i in pageCount%}
+                <li {%ifequal currentPage|add:"0"  forloop.counter %} class="active"{%endifequal%} ><a href="{% url 'Gavinz.views.articles' forloop.counter %}"  >{{forloop.counter}}</a></li>
+                {%endfor%}
+
+                {% with max=pageCount|last%}
+
+                  <li {%if currentPage|add:"0" != max %}  {%else%} class="sr-only" {%endif%} ><a href="{% url 'Gavinz.views.articles' currentPage|add:"+1" %}">Next</a></li>
+
+                {%endwith%}
+              </ul>
+            </div>
+		</div>
+
+{%endblock%}

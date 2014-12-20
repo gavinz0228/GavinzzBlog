@@ -1,35 +1,38 @@
 {%extends "base.html"%}
 {%block title%}Home - {{blogInfo.owner}}{%endblock%}
 
+
 {%block content%}
 
+				{%for article in articles%}
 				<div class="thumbnail tile fluid article-container">
 					<div class="title highlight" style="border-bottom:1px solid #E3E7E8;">
-						<p class="text-center h4 ">Left aligned text.</p>
+						<p class="text-center h4 "><strong>{{article.title}}</strong></p>
 					</div>
-					<div class="article-content">sdf</div>
+					<div class="article-content">{{article.content|safe}}</div>
 					<div class="row article-bottom">
-						<div class="col-md-7">
-						    <button type="button" class="col-md-4 btn btn-primary btn-lg pull-right"  > Read </button>
+						<div class="col-md-3">
+						    <button type="button" class="col-md-12 btn btn-primary btn-lg pull-left"  > Read </button>
 						</div>
-						<div class="col-md-5">
-						    Visitor: &nbsp;Create Date: &nbsp;Author: &nbsp;&nbsp;&nbsp;
+						<div class="col-md-9">
+						    Visitor:<strong>{{article.visitor}}</strong>  &nbsp;Create Date:<strong>{{article.createDate}}</strong>  &nbsp; Category:<strong>{{article.category}}</strong> &nbsp;&nbsp;&nbsp;
 						</div>
 					</div>
 				</div>
-				<div class="thumbnail tile fluid article-container">
-					<div class="title highlight" style="border-bottom:1px solid #E3E7E8;">
-						<p class="text-center h4 ">Left aligned text.</p>
-					</div>
-					<div class="article-content">sdf</div>
-					<div class="row article-bottom">
-						<div class="col-md-7">
-						    <button type="button" class="col-md-4 btn btn-primary btn-lg pull-right"  > Read </button>
-						</div>
-						<div class="col-md-5">
-						    Visitor: &nbsp;Create Date: &nbsp;Author: &nbsp;&nbsp;&nbsp;
-						</div>
-					</div>
-				</div>
+				{%endfor%}
+    			<div class="pagination-bar">
+                  <ul class="pagination">
+                    <li {%if currentPage|add:"0" != 1 %}  {%else%} class="sr-only" {%endif%}><a href='{% url 'Gavinz.views.articles' currentPage|add:"-1" %}' >Prev</a></li>
+                    {%for i in pageCount%}
+                    <li {%ifequal currentPage|add:"0"  forloop.counter %} class="active"{%endifequal%} ><a href="{% url 'Gavinz.views.articles' forloop.counter %}"  >{{forloop.counter}}</a></li>
+                    {%endfor%}
+
+                    {% with max=pageCount|last%}
+
+                      <li {%if currentPage|add:"0" != max %}  {%else%} class="sr-only" {%endif%} ><a href="{% url 'Gavinz.views.articles' currentPage|add:"+1" %}">Next</a></li>
+
+                    {%endwith%}
+                  </ul>
+                </div>
 
 {%endblock%}

@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.core.management',
     'Gavinz',
+
 )
 
 MIDDLEWARE_CLASSES = (

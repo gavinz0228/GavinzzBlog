@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load template_tags %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,32 +7,48 @@
 <meta charset="utf-8">
 <title>{%block title%}Gavin Zhang's Blog{%endblock%}</title>
 <style type="text/css">
+html, body{
 
-body{
-	background-color:#F7F7F7;
 	margin-bottom:0px;
+	background-color:#FAFAFA;
 }
 #main-box{
 	margin-top:20px;
+	margin-bottom:50px;
+
 }
 #profile-container{
-background: #47a3ff; /* Old browsers */
-background: -moz-linear-gradient(top, #47a3ff 0%, #1581ed 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#47a3ff), color-stop(100%,#1581ed)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, #47a3ff 0%,#1581ed 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, #47a3ff 0%,#1581ed 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top, #47a3ff 0%,#1581ed 100%); /* IE10+ */
-background: linear-gradient(to bottom, #47a3ff 0%,#1581ed 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#47a3ff', endColorstr='#1581ed',GradientType=0 ); /* IE6-9 */	
+background: #89c3eb; /* Old browsers */
+background: -moz-linear-gradient(top, #89c3eb 0%, #339be0 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#89c3eb), color-stop(100%,#339be0)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #89c3eb 0%,#339be0 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #89c3eb 0%,#339be0 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #89c3eb 0%,#339be0 100%); /* IE10+ */
+background: linear-gradient(to bottom, #89c3eb 0%,#339be0 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#89c3eb', endColorstr='#339be0',GradientType=0 ); /* IE6-9 */
+
 	}
 
 #profile{
 	margin-top:60px;
 	color:white;
 }
-#profile-container{
+#profile-container {
 
 	height:250px;
+	padding-left:10px;
+	padding-right:10px;
+	font-size:17px;
+
+}
+#profile-pic{
+    text-align:center;
+}
+#profile-pic img{
+    height:180px;
+    width:180px;
+    box-shadow:2px 2px 2px grey;
+
 }
 .nav-li li{
 	margin-left:50px;
@@ -39,15 +56,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#47a3ff', end
 	font-size:16px;
 }
 .category-title{
-	font-size:20px;
+	font-size:18px;
 	font-weight:bold;
 	text-align:center;
-	
+
 }
 #top-nav{
 
 	text-align:center;
-	box-shadow:#9CC1DB 0px 2px 10px;
+	box-shadow:#AAAAAA 0px 2px 10px;
+background: #f8f8f8; /* Old browsers */
+background: -moz-linear-gradient(top,  #f8f8f8 0%, #dbdcdd 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dbdcdd)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #f8f8f8 0%,#dbdcdd 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #f8f8f8 0%,#dbdcdd 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #f8f8f8 0%,#dbdcdd 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #f8f8f8 0%,#dbdcdd 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#dbdcdd',GradientType=0 ); /* IE6-9 */
+
 }
 #go-top-btn{
 	position:fixed;
@@ -56,19 +82,36 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#47a3ff', end
 }
 #left-side
 {
-	background-color:#F8F8F8;
 	border-right:1px solid #CCCCCC;
-	font-size:18px;
-	box-shadow: 0px 2px 10px #9CC1DB;
-	padding-top:20px;
+	font-size:16px;
+	color:#777;
+	box-shadow: 0px 2px 10px #CECECE;
+	padding-top:10px;
+	padding-bottom:10px;
+	margin-bottom:20px;
 	text-align:center;
+	background-color:#F8F8F8;
+background: #fafafa; /* Old browsers */
+background: -moz-linear-gradient(left,  #fafafa 0%, #f8f8f8 5%, #f8f8f8 95%, #fafafa 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#fafafa), color-stop(5%,#f8f8f8), color-stop(95%,#f8f8f8), color-stop(100%,#fafafa)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left,  #fafafa 0%,#f8f8f8 5%,#f8f8f8 95%,#fafafa 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left,  #fafafa 0%,#f8f8f8 5%,#f8f8f8 95%,#fafafa 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left,  #fafafa 0%,#f8f8f8 5%,#f8f8f8 95%,#fafafa 100%); /* IE10+ */
+background: linear-gradient(to right,  #fafafa 0%,#f8f8f8 5%,#f8f8f8 95%,#fafafa 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#fafafa',GradientType=1 ); /* IE6-9 */
 }
 
 #left-side ul li a{
 	list-style-type:none;
 	font-size:16px;
 	padding-top:0px;
-	height:22px;
+	height:18px;
+	color:#041F80;
+	font-weight:bold;
+	text-align:center;
+}
+#right-side {
+    min-height:500px;
 }
 .article-container{
 	min-height:430px;
@@ -77,6 +120,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#47a3ff', end
 }
 .article-content{
 	min-height:500px;
+	padding-top:20px;
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom:10px;
+	font-size:16px;
+	overflow:auto;
 }
 .article-bottom
 {
@@ -95,23 +144,53 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#47a3ff', end
 	font-weight:bold;
 	line-height:40px;
 	text-shadow:2px 2px 2px grey;
+
 }
+.pagination-bar
+{
+    text-align:right;
+    margin-right:80px;
+}
+@media (min-width: 400px) {
+    #profile-container{
+        height:410px;
+    }
+}
+@media (max-width: 399px) {
+    #profile-container{
+        height:410px;
+    }
+}
+@media(min-width:750px)
+{
+        #profile-container{
+        height:300px;
+    }
+}
+@media(min-width:995px)
+{
+    #profile-container{
+        height:250px;
+    }
+}
+
 </style>
 
 <!--<script src='jquery-2.1.0.min.js'></script>-->
 
 <link rel="stylesheet" href="{% static "bootstrap.css" %}"/>
 </head>
+
 <body>
+
 	<div id="top-nav" class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="col-md-offset-1 col-md-10">
-
 			<ul class="collapse navbar-collapse nav navbar-nav col-md-offset-1 col-md-8 nav-li">
-				
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">My Profile</a></li>
-				<li><a href="#about">Article List</a></li>
-				<li><a href="#contact">Contact Me</a></li>
+
+				<li class="active"><a href="{% url 'Gavinz.views.home' %}">Home</a></li>
+				<li><a href="{% url 'Gavinz.views.profile' %}">My Profile</a></li>
+				<li><a href="{% url 'Gavinz.views.articles' %}">Article List</a></li>
+				<li><a href="{% url 'Gavinz.views.contactus' %}">Contact Me</a></li>
 			</ul>
 			<div class="col-md-2 row pull-right">
 				<div class="col-xs-11 nav navbar-nav pull-right">
@@ -127,67 +206,35 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#47a3ff', end
 			</div>
 		</div>
 	</div>
-	<div id="profile-container" class="container-fluid">
-		<div id="profile" class="col-md-offset-1 col-md-10" >
-			<div class="col-md-4">
-				pic
-			</div>
-			<div class="col-md-8">
-				My legal name is Jialang Zhang but you can call me Gavin.
-				<span class="badge">C#(WinForm,WebForm,.Net MVC)</span>
-				<span class="badge">Entity Framework</span>
-				<span class="badge">SQL Server</span>
-				<span class="badge">PHP & MYSQL</span>
-				<span class="badge">HTML+CSS+Bootstrap</span>
-				<span class="badge">Javascript JQuery</span>
-			</div>			
-		</div>
-	</div>
+        {%intro%}
+		{%block intro%}
+
+
+		{%endblock%}
+
 	<div id="main-box" class="container col-sm-12 col-md-offset-1 col-md-10">
 		<div class="row">
-			<div id="left-side" class="col-md-3" >
-			<p class="category-title text-center">Category</p>
+			<div id="left-side" class="col-md-0 col-md-3 " >
+			<div class="category-title text-center">Category</div>
 				<hr/>
-				<ul class="nav nav-pills ">
-					<li><a href="#">C#/.Net (20)</a></li>
-					<li><a href="#">News (40)</a></li>
-					<li><a href="#">Career (20)</a></li>
-				</ul>
+				{%category%}
+
 				<hr/>
-				<p class="category-title">Recommended</p>
+				<div class="category-title">Recommended</div>
 				<hr/>
-				<p class="category-title">What's New</p>
-			
+				<div class="category-title">What's New</div>
+
 			</div>
-			<div id="right-side" class="col-sm-12 col-md-9 " >
+			<div id="right-side" class="col-sm-12 col-md-9" >
 			    {%block content%}
-			    <div class="thumbnail tile fluid article-container">
-					<div class="title highlight" style="border-bottom:1px solid #E3E7E8;">
-						<p class="text-center h4 ">Left aligned text.</p>
-					</div>
-					<div class="article-content">sdf</div>
-					<hr/>
-					<div class="row article-bottom">
-						<div class="col-md-12 h4">Visitor: &nbsp;Create Date: &nbsp;Author: &nbsp;&nbsp;&nbsp;<button type="button" class=" btn btn-primary btn-lg"> Read </button></div>
-					</div>
-				</div>				
-				<div class="thumbnail tile fluid article-container">
-					<div class="title highlight" style="border-bottom:1px solid #E3E7E8;">
-						<p class="text-center h4 ">Left aligned text.</p>
-					</div>
-					<div class="article-content">sdf</div>
-					<hr/>
-					<div class="row article-bottom">
-						<div class="col-md-12 h4">Visitor: &nbsp;Create Date: &nbsp;Author: &nbsp;&nbsp;&nbsp;<button type="button" class=" btn btn-primary btn-lg"> Read </button></div>
-					</div>
-				</div>
+
 			    {%endblock%}
-			
+
 
 			</div>
 		</div>
 	</div>
-	<div id="bottom" class="container-fluid col-md-12 col-sm-12">
+	<div id="bottom" class="footer navbar-fixed-bottom container-fluid col-md-12 col-sm-12">
 		Developed By Gavin(Jialang) Zhang
 	</div>
 
